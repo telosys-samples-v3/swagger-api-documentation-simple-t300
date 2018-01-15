@@ -1,0 +1,358 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API REST",
+    "description": "swagger API description gerator"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "BookOrder",
+      "description": "Everything about BookOrder entity"
+    }
+  ],
+  "paths": {
+  	"/bookOrder/{id}": {
+      "get": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Get one BookOrder with the given id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of BookOrder",
+            "required": true,
+            "type": "integer",
+          	"maximum": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/bookOrder"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Update a BookOrder",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of BookOrder",
+            "required": true,
+            "type": "integer",
+          	"maximum": 10
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bookOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Update"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Delete a BookOrder",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of BookOrder",
+            "required": true,
+            "type": "integer",
+          	"maximum": 10
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/bookOrder": {
+      "post": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Create a BookOrder",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bookOrder"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "409": {
+            "$ref": "#/responses/409"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Save a BookOrder",
+        "description": "Creation if entity not exists (201 created)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bookOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Update",
+            "schema": {
+              "$ref": "#/definitions/bookOrder"
+            }
+          },
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Get all BookOrders",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bookOrder"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/bookOrder.count": {
+      "get": {
+        "tags": [
+          "BookOrder"
+        ],
+        "summary": "Count all BookOrders",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/count"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "bookOrder": {
+      "type": "object",
+      "required": [
+        "id",
+        "shopCode",
+        "customerCode",
+        "employeeCode"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "maximum": 10
+        },
+        "shopCode": {
+          "type": "string",
+          "maximum": 3
+        },
+        "customerCode": {
+          "type": "string",
+          "maximum": 5
+        },
+        "employeeCode": {
+          "type": "string",
+          "maximum": 4
+        },
+        "date": {
+          "type": "string
+        format: date-time",
+          "maximum": 10
+        },
+        "state": {
+          "type": "integer",
+          "maximum": 10
+        }
+      }
+    },
+    "count": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "error_description": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "schema": {
+        "$ref": "#/definitions/bookOrder"
+      }
+    },
+    "204": {
+      "description": "Delete successful"
+    },
+    "400": {
+      "description": "Bad request - The query syntax is incorrect"
+    },
+    "401": {
+      "description": "Unauthorized - Authentication required"
+    },
+    "403": {
+      "description": "Forbiden - access forbidden"
+    },
+    "404": {
+      "description": "Not Found - The resource does not exist"
+    },
+    "405": {
+      "description": "Method Not Allowed - Unavailable method or insufficient right"
+    },
+    "406": {
+      "description": "Not acceptable - format not supported"
+    },
+    "409": {
+      "description": "Conflict - already exists"
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "schema": {
+        "$ref": "#/definitions/error"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

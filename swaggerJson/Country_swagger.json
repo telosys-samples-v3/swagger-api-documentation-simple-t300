@@ -1,0 +1,338 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API REST",
+    "description": "swagger API description gerator"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "Country",
+      "description": "Everything about Country entity"
+    }
+  ],
+  "paths": {
+  	"/country/{code}": {
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Get one Country with the given id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Country",
+            "required": true,
+            "type": "string",
+          	"maximum": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/country"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Update a Country",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Country",
+            "required": true,
+            "type": "string",
+          	"maximum": 2
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/country"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Update"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Delete a Country",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Country",
+            "required": true,
+            "type": "string",
+          	"maximum": 2
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/country": {
+      "post": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Create a Country",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/country"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "409": {
+            "$ref": "#/responses/409"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Save a Country",
+        "description": "Creation if entity not exists (201 created)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/country"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Update",
+            "schema": {
+              "$ref": "#/definitions/country"
+            }
+          },
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Get all Countrys",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/country"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/country.count": {
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Count all Countrys",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/count"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "country": {
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "maximum": 2
+        },
+        "name": {
+          "type": "string",
+          "maximum": 45
+        }
+      }
+    },
+    "count": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "error_description": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "schema": {
+        "$ref": "#/definitions/country"
+      }
+    },
+    "204": {
+      "description": "Delete successful"
+    },
+    "400": {
+      "description": "Bad request - The query syntax is incorrect"
+    },
+    "401": {
+      "description": "Unauthorized - Authentication required"
+    },
+    "403": {
+      "description": "Forbiden - access forbidden"
+    },
+    "404": {
+      "description": "Not Found - The resource does not exist"
+    },
+    "405": {
+      "description": "Method Not Allowed - Unavailable method or insufficient right"
+    },
+    "406": {
+      "description": "Not acceptable - format not supported"
+    },
+    "409": {
+      "description": "Conflict - already exists"
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "schema": {
+        "$ref": "#/definitions/error"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

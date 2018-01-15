@@ -1,0 +1,338 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API REST",
+    "description": "swagger API description gerator"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "Author",
+      "description": "Everything about Author entity"
+    }
+  ],
+  "paths": {
+  	"/author/{id}": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Get one Author with the given id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Author",
+            "type": "integer",
+          	"maximum": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/author"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Update a Author",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Author",
+            "type": "integer",
+          	"maximum": 10
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/author"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Update"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Delete a Author",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Author",
+            "type": "integer",
+          	"maximum": 10
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/author": {
+      "post": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Create a Author",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/author"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "409": {
+            "$ref": "#/responses/409"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Save a Author",
+        "description": "Creation if entity not exists (201 created)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Valid JSON object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/author"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Update",
+            "schema": {
+              "$ref": "#/definitions/author"
+            }
+          },
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Get all Authors",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/author"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/author.count": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "summary": "Count all Authors",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/count"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "author": {
+      "type": "object",
+      "required": [
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "maximum": 10
+        },
+        "firstName": {
+          "type": "string",
+          "maximum": 40
+        },
+        "lastName": {
+          "type": "string",
+          "maximum": 40
+        }
+      }
+    },
+    "count": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "error_description": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "schema": {
+        "$ref": "#/definitions/author"
+      }
+    },
+    "204": {
+      "description": "Delete successful"
+    },
+    "400": {
+      "description": "Bad request - The query syntax is incorrect"
+    },
+    "401": {
+      "description": "Unauthorized - Authentication required"
+    },
+    "403": {
+      "description": "Forbiden - access forbidden"
+    },
+    "404": {
+      "description": "Not Found - The resource does not exist"
+    },
+    "405": {
+      "description": "Method Not Allowed - Unavailable method or insufficient right"
+    },
+    "406": {
+      "description": "Not acceptable - format not supported"
+    },
+    "409": {
+      "description": "Conflict - already exists"
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "schema": {
+        "$ref": "#/definitions/error"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
