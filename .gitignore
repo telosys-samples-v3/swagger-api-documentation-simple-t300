@@ -1,7 +1,7 @@
 # Skip telosys tools 
 TelosysTools/downloads
 TelosysTools/lib
-# TelosysTools/templates/*
+TelosysTools/templates/*
 
 .metadata/
 .settings/
